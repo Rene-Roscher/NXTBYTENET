@@ -53,7 +53,8 @@
                             <a href="#"><img src="<?= $frontUrl; ?>img/logo/footer-logo.png" alt="logo"></a>
                         </div>
                         <p class="contact-info"><span>Telefon:</span><a href="tel: 0173 7580707">0173 7580707</a></p>
-                        <p class="contact-info"><span>Email:</span><a href="mailto:support@nxtbyte.net">support@nxtbyte.net</a> </p>
+                        <p class="contact-info"><span>Email:</span><a href="mailto:support@nxtbyte.net">support@nxtbyte.net</a>
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12 col-12 ">
@@ -63,7 +64,7 @@
                             <ul>
                                 <li><a href="<?= $url; ?>teamspeak">TeamSpeak Server</a></li>
                                 <li><a href="<?= $url; ?>musikbot">Musikbot</a></li>
-								<li><a href="<?= $url; ?>webhosting">Webhosting</a></li>
+                                <li><a href="<?= $url; ?>webhosting">Webhosting</a></li>
                             </ul>
                         </div>
                     </div>
@@ -73,7 +74,8 @@
                         <h2>Nützliche Links</h2>
                         <div class="footer-links">
                             <ul>
-                                <li><a href="http://ts-reseller.de/host/?id=XZ7FYL3VE95TT422CZ4NSWG">TeamSpeak ATHP</a></li>
+                                <li><a href="http://ts-reseller.de/host/?id=XZ7FYL3VE95TT422CZ4NSWG">TeamSpeak ATHP</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -100,8 +102,10 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 text-right ">
                     <div class="social-links">
-                        <a href="https://www.youtube.com/channel/UCUn2mF1_mZ4iPVn1T6WgSCQ" target="_blank"><span class="ti-youtube"></span></a>
-                        <a href="https://twitter.com/NXTByteNET" target="_blank"><span class="ti-twitter-alt"></span></a>
+                        <a href="https://www.youtube.com/channel/UCUn2mF1_mZ4iPVn1T6WgSCQ" target="_blank"><span
+                                    class="ti-youtube"></span></a>
+                        <a href="https://twitter.com/NXTByteNET" target="_blank"><span
+                                    class="ti-twitter-alt"></span></a>
                     </div>
                 </div>
             </div>
@@ -123,7 +127,7 @@
         spaceBetween: 30,
         effect: 'fade',
         loop: true,
-        mousewheel:false,
+        mousewheel: false,
         // autoHeight: true,
         pagination: {
             el: '.blog-slider__pagination',
@@ -136,7 +140,7 @@
             spaceBetween: 30,
             effect: 'fade',
             loop: true,
-            mousewheel:false,
+            mousewheel: false,
             // autoHeight: true,
             pagination: {
                 el: '.blog-slider__pagination',

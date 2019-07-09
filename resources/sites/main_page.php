@@ -9,7 +9,7 @@ include 'app/require_once/page_controller.php';
             <div class="col-md-12">
                 <div class="section-title ">
                     <h2>Warum gerade <span>NXTByte</span>? </h2>
-                    <p>Warum solltest du dich gerade für NXTByte.net entscheiden.</p>
+                    <p>Warum solltest du dich für NXTByte.net entscheiden?</p>
                 </div>
             </div>
         </div>
@@ -17,15 +17,15 @@ include 'app/require_once/page_controller.php';
             <div class="col-xl-4 col-lg-4 col-md-4 col-12 ">
                 <div class="single-blog-1">
                     <img src="<?= $frontUrl; ?>img/service/about-icon-11.png" alt="section-icon">
-                    <h2>Starke Leistung</h2>
+                    <h2>Beschte Leistung</h2>
                     <p>Wir verwenden ausschließlich hochwertige Hardware für den Dauerbetrieb.</p>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-12 ">
                 <div class="single-blog-1">
                     <img src="<?= $frontUrl; ?>img/service/service-icon-4.png" alt="section-icon">
-                    <h2>DDoS Schutz</h2>
-                    <p>Bei uns sind deine Produkte vor DDoS Angriffen bestens gesichert mit unserem OVH Game Schutz.</p>
+                    <h2>DDoS-Schutz</h2>
+                    <p>Bei uns sind deine Produkte vor DDoS Angriffen bestens gesichert mit unsere OVH Game Schutz.</p>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-12 ">

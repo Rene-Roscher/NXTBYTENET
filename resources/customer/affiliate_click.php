@@ -24,7 +24,8 @@ if(!empty($id)){
 
     setcookie("affiliate_id", $id, time() + (10 * 365 * 24 * 60 * 60));
 	header('Location: '.$url);
-
+    die();
 } else {
     header('Location: '.$url);
+    die();
 }

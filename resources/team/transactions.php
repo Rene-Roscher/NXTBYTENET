@@ -23,7 +23,7 @@ if(isset($_POST['customerLogin'])){
             $_SESSION['email'] = $kundenInfo['email'];
 
             header('Location: ' . $url.'dashboard');
-
+            die();
         }
 
     }

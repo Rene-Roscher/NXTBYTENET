@@ -6,6 +6,7 @@ $user_id = $_GET['id'];
 
 if(!($role->isAdmin($odb, $_SESSION['id']))){
     header('Location: '.$url.'logout');
+    die();
 }
 
 if(isset($_POST['giveMoney'])){

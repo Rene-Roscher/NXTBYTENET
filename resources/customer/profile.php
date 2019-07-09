@@ -142,7 +142,7 @@ include 'app/require_once/page_controller.php';
                 <div class="card card-shadow">
                     <div class="card-header card-header-transparent py-20">
 
-                        <h3 class="text-center">Wie funktioniert das Affiliate System?</h3>
+                        <h3 class="text-center">Wie funktioniert das Affiliate-System?</h3>
                         <br>
                         Schicke deinen eigenen Affiliate Link an Freunde oder Familie und erhalte nach jeder Registrierung die einen Mindestbetrag von 5.00 Euro auflädt 1.00 Euro geschenkt.
 
@@ -165,7 +165,7 @@ include 'app/require_once/page_controller.php';
 
                                 <div class="col-md-4">
                                     <div class="counter">
-                                        <div class="counter-label">Guthaben erhalten</div>
+                                        <div class="counter-label">Erhaltenes Guthaben</div>
                                         <div class="counter-number-group text-truncate">
                                             <span class="counter-number-related green-600">+</span>
                                             <span class="counter-number"><?php echo number_format($affliate_registers * 1, 2); ?>€</span>
@@ -205,7 +205,7 @@ include 'app/require_once/page_controller.php';
                             </form>
 
                             <br>
-                            <small><span style="color: red;">*</span> Hinweis: Der Affiliate Link kann nicht mehr geändert werden.</small>
+                            <small><span style="color: red;">*</span> Hinweis: Der Affiliate Link kann nicht mehr geändert werden!</small>
                         <?php } else { ?>
                             <h4 class="text-center">Dein Affiliate Link lautet:</h4>
                             <input class="form-control" disabled value="<?php echo $url; ?>a/<?php echo $userInfo['affiliate_id']; ?>">
@@ -221,7 +221,7 @@ include 'app/require_once/page_controller.php';
                 <div class="card card-shadow">
                     <div class="card-header card-header-transparent py-20">
 
-                        <p>Hier kannst du einstellen welche E-Mails du bekommst und welche nicht</p>
+                        <p>Hier kannst du einstellen, für was du alles eine E-Mail bekommen möchtest.</p>
 
                         <form method="post">
 

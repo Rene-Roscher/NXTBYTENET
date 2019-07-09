@@ -1,6 +1,6 @@
 <?php
 
-if(strpos($currPage, 'auth_') !== false){
+if (strpos($currPage, 'auth_') !== false) {
     $currPageName = str_replace("auth_", "", $currPage);
     $isBackPage = TRUE;
 } else {
@@ -18,7 +18,7 @@ if(strpos($currPage, 'auth_') !== false){
     <meta name="description" content="bootstrap admin template">
     <meta name="author" content="">
 
-    <title><?= $currPageName.' | '.$name; ?></title>
+    <title><?= $currPageName . ' | ' . $name; ?></title>
 
     <link rel="apple-touch-icon" href="<?php echo $cdnUrl; ?>images/apple-touch-icon.png">
     <link rel="shortcut icon" href="<?= $frontUrl; ?>img/favicon.ico">
@@ -37,13 +37,20 @@ if(strpos($currPage, 'auth_') !== false){
     <link rel="stylesheet" href="<?php echo $cdnUrl; ?>vendor/flag-icon-css/flag-icon.css">
     <link rel="stylesheet" href="<?php echo $cdnUrl; ?>examples/css/pages/login-v3.css">
     <link rel="stylesheet" href="<?php echo $cdnUrl; ?>vendor/datatables.net-bs4/dataTables.bootstrap4.css">
-    <link rel="stylesheet" href="<?php echo $cdnUrl; ?>vendor/datatables.net-fixedheader-bs4/dataTables.fixedheader.bootstrap4.css">
-    <link rel="stylesheet" href="<?php echo $cdnUrl; ?>vendor/datatables.net-fixedcolumns-bs4/dataTables.fixedcolumns.bootstrap4.css">
-    <link rel="stylesheet" href="<?php echo $cdnUrl; ?>vendor/datatables.net-rowgroup-bs4/dataTables.rowgroup.bootstrap4.css">
-    <link rel="stylesheet" href="<?php echo $cdnUrl; ?>vendor/datatables.net-scroller-bs4/dataTables.scroller.bootstrap4.css">
-    <link rel="stylesheet" href="<?php echo $cdnUrl; ?>vendor/datatables.net-select-bs4/dataTables.select.bootstrap4.css">
-    <link rel="stylesheet" href="<?php echo $cdnUrl; ?>vendor/datatables.net-responsive-bs4/dataTables.responsive.bootstrap4.css">
-    <link rel="stylesheet" href="<?php echo $cdnUrl; ?>vendor/datatables.net-buttons-bs4/dataTables.buttons.bootstrap4.css">
+    <link rel="stylesheet"
+          href="<?php echo $cdnUrl; ?>vendor/datatables.net-fixedheader-bs4/dataTables.fixedheader.bootstrap4.css">
+    <link rel="stylesheet"
+          href="<?php echo $cdnUrl; ?>vendor/datatables.net-fixedcolumns-bs4/dataTables.fixedcolumns.bootstrap4.css">
+    <link rel="stylesheet"
+          href="<?php echo $cdnUrl; ?>vendor/datatables.net-rowgroup-bs4/dataTables.rowgroup.bootstrap4.css">
+    <link rel="stylesheet"
+          href="<?php echo $cdnUrl; ?>vendor/datatables.net-scroller-bs4/dataTables.scroller.bootstrap4.css">
+    <link rel="stylesheet"
+          href="<?php echo $cdnUrl; ?>vendor/datatables.net-select-bs4/dataTables.select.bootstrap4.css">
+    <link rel="stylesheet"
+          href="<?php echo $cdnUrl; ?>vendor/datatables.net-responsive-bs4/dataTables.responsive.bootstrap4.css">
+    <link rel="stylesheet"
+          href="<?php echo $cdnUrl; ?>vendor/datatables.net-buttons-bs4/dataTables.buttons.bootstrap4.css">
     <link rel="stylesheet" href="<?php echo $cdnUrl; ?>examples/css/tables/datatable.css">
 
     <!-- DASHBOARD -->
@@ -62,7 +69,8 @@ if(strpos($currPage, 'auth_') !== false){
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
     <link rel="stylesheet" href="<?php echo $cdnUrl; ?>fonts/font-awesome/font-awesome.min.css?v4.0.2">
 
-    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+            integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
 
     <!--[if lt IE 9]>
     <script src="<?php echo $cdnUrl; ?>vendor/html5shiv/html5shiv.min.js"></script>
@@ -73,9 +81,12 @@ if(strpos($currPage, 'auth_') !== false){
     <script src="<?php echo $cdnUrl; ?>vendor/respond/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" integrity="sha256-ENFZrbVzylNbgnXx0n3I1g//2WeO47XxoPe0vkp3NC8=" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" integrity="sha256-3blsJd4Hli/7wCQ+bmgXfOdK7p/ZUMtPXY08jmxSSgk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+          integrity="sha256-ENFZrbVzylNbgnXx0n3I1g//2WeO47XxoPe0vkp3NC8=" crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"
+            integrity="sha256-3blsJd4Hli/7wCQ+bmgXfOdK7p/ZUMtPXY08jmxSSgk=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -89,14 +100,15 @@ if(strpos($currPage, 'auth_') !== false){
 </head>
 <?php
 
-if(strpos($currPage, 'auth_') !== false){
+if (strpos($currPage, 'auth_') !== false) {
     $class = 'animsition page-login-v3 layout-full';
-} elseif(strpos($currPage, 'back_') !== false){
+} elseif (strpos($currPage, 'back_') !== false) {
     $class = 'animsition dashboard';
 }
 
 ?>
 <body class="<?php echo $class; ?>">
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->

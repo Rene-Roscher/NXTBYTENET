@@ -11,7 +11,9 @@ include 'app/require_once/page_controller.php';
 
     <div class="page-content container-fluid">
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Neues Ticket erstellen</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Neues Ticket
+            erstellen
+        </button>
         <br><br>
 
         <div class="row">
@@ -21,11 +23,11 @@ include 'app/require_once/page_controller.php';
                     <div class="card-header card-header-transparent">
 
                         <?php
-                        if(isset($_POST['createTicket'])){
-                            if(isset($_POST['title']) && !empty($_POST['title'])){
-                                if(isset($_POST['category']) && !empty($_POST['category'])){
-                                    if(isset($_POST['priority']) && !empty($_POST['priority'])){
-                                        if(isset($_POST['message']) && !empty($_POST['message'])){
+                        if (isset($_POST['createTicket'])) {
+                            if (isset($_POST['title']) && !empty($_POST['title'])) {
+                                if (isset($_POST['category']) && !empty($_POST['category'])) {
+                                    if (isset($_POST['priority']) && !empty($_POST['priority'])) {
+                                        if (isset($_POST['message']) && !empty($_POST['message'])) {
 
                                             $SQL = $odb->prepare("INSERT INTO `tickets`(`user_id`, `categorie`, `priority`, `title`, `message`, `status`, `last_msg`) VALUES (:user_id,:categorie,:priority,:title,:message,:status,:last_msg)");
                                             $SQL->execute(array(":user_id" => $_SESSION['id'], ":categorie" => $_POST['category'], ":priority" => $_POST['priority'], ":title" => $_POST['title'], ":message" => $_POST['message'], ":status" => 'OPEN', ":last_msg" => 'CUSTOMER'));
@@ -34,10 +36,11 @@ include 'app/require_once/page_controller.php';
                                             sendMail($_SESSION['email'], $_SESSION['id'], $mailContent, $mailSubject, $emailAltBody, '', '');
 
                                             //TODO
-                                            sendPush($pushoverUserKey,'Neues Support-Ticket','Soeben wurde ein neues Support-Ticket von dem Benutzer '.$user->getName($odb, $_SESSION['id']).' mit dem Titel '.$_POST['title'].' erstellt.');
+                                            sendPush($pushoverUserKey, 'Neues Support-Ticket', 'Soeben wurde ein neues Support-Ticket von dem Benutzer ' . $user->getName($odb, $_SESSION['id']) . ' mit dem Titel ' . $_POST['title'] . ' erstellt.');
 
                                             echo sendSuccess('Deine Anfrage wurde an das Team übermittelt');
-                                            header('Location: '.$url.'support');
+                                            header('Location: ' . $url . 'support');
+                                            die();
 //                                            header('refresh:3;url='.$url.'support');
                                         }
                                     }
@@ -50,31 +53,31 @@ include 'app/require_once/page_controller.php';
 
                         <table class="table table-hover table-striped w-full" id="desc_table">
                             <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Titel</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Letzte Antwort</th>
-                                    <th scope="col">Datum</th>
-                                    <th scope="col"></th>
-                                </tr>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Titel</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Letzte Antwort</th>
+                                <th scope="col">Datum</th>
+                                <th scope="col"></th>
+                            </tr>
                             </thead>
                             <tbody>
                             <?php
-                            $SQL = $odb -> prepare("SELECT * FROM `tickets` WHERE `user_id` = :user_id");
+                            $SQL = $odb->prepare("SELECT * FROM `tickets` WHERE `user_id` = :user_id");
                             $SQL->execute(array(":user_id" => $_SESSION['id']));
                             if ($SQL->rowCount() != 0) {
-                                while ($row = $SQL -> fetch(PDO::FETCH_ASSOC)){
+                                while ($row = $SQL->fetch(PDO::FETCH_ASSOC)) {
 
-                                    if($row['status'] == 'OPEN'){
+                                    if ($row['status'] == 'OPEN') {
                                         $status = 'Offen';
-                                    } elseif($row['status'] == 'CLOSED'){
+                                    } elseif ($row['status'] == 'CLOSED') {
                                         $status = 'Geschlossen';
                                     }
 
-                                    if($row['last_msg'] == 'CUSTOMER'){
+                                    if ($row['last_msg'] == 'CUSTOMER') {
                                         $last_msg = 'Kundenantwort';
-                                    } elseif($row['last_msg'] == 'SUPPORT'){
+                                    } elseif ($row['last_msg'] == 'SUPPORT') {
                                         $last_msg = 'Supportantwort';
                                     }
 
@@ -85,9 +88,11 @@ include 'app/require_once/page_controller.php';
                                         <th scope="row"><?php echo $status; ?></th>
                                         <th scope="row"><?php echo $last_msg; ?></th>
                                         <td><?php echo $row['created_at']; ?></td>
-                                        <td><a href="<?php echo $url; ?>support/<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Anschauen</a></td>
+                                        <td><a href="<?php echo $url; ?>support/<?php echo $row['id']; ?>"
+                                               class="btn btn-primary btn-sm">Anschauen</a></td>
                                     </tr>
-                                <?php } } ?>
+                                <?php }
+                            } ?>
                             </tbody>
                         </table>
 
@@ -99,7 +104,8 @@ include 'app/require_once/page_controller.php';
     </div>
 
     <form method="post">
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

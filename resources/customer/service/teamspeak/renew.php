@@ -30,7 +30,8 @@ include 'app/functions/services/teamspeak/renew.php';
                             </tr>
                             <tr>
                                 <th class="text-left">Laufzeit:</th>
-                                <td class="text-right"> <span id="countdown_text"> <span id="countdown">Lädt...</span></span> </td>
+                                <td class="text-right"><span id="countdown_text"> <span
+                                                id="countdown">Lädt...</span></span></td>
                             </tr>
                             </tbody>
                         </table>
@@ -45,15 +46,17 @@ include 'app/functions/services/teamspeak/renew.php';
                         <h4>Server verlängern</h4>
 
                         <form method="post">
-                        <select id="duration" name="duration" class="form-control">
-                            <option data-factor="30" value="30" selected="">30 Tage</option>
-                            <option data-factor="60" value="60">60 Tage</option>
-                            <option data-factor="90" value="90">90 Tage</option>
-                        </select>
+                            <select id="duration" name="duration" class="form-control">
+                                <option data-factor="30" value="30" selected="">30 Tage</option>
+                                <option data-factor="60" value="60">60 Tage</option>
+                                <option data-factor="90" value="90">90 Tage</option>
+                            </select>
 
-                        <br>
+                            <br>
 
-                        <button type="submit" name="renewService" class="btn btn-primary">Kostenpflichtig verlängern</button>
+                            <button type="submit" name="renewService" class="btn btn-primary">Kostenpflichtig
+                                verlängern
+                            </button>
                         </form>
 
                     </div>
@@ -79,7 +82,7 @@ include 'app/functions/services/teamspeak/renew.php';
 
 <script>
     var countDownDate = new Date("<?= $serverInfos['expire_at']; ?>").getTime();
-    var x = setInterval(function() {
+    var x = setInterval(function () {
 
         var now = new Date().getTime();
         var distance = countDownDate - now;
@@ -89,21 +92,37 @@ include 'app/functions/services/teamspeak/renew.php';
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        if(days == 1){ var days_text = ' Tag' } else { var days_text = ' Tage'; }
-        if(hours == 1){ var hours_text = ' Stunde' } else { var hours_text = ' Stunden'; }
-        if(minutes == 1){ var minutes_text = ' Minute' } else { var minutes_text = ' Minuten'; }
-        if(seconds == 1){ var seconds_text = ' Sekunde' } else { var seconds_text = ' Sekunden'; }
+        if (days == 1) {
+            var days_text = ' Tag'
+        } else {
+            var days_text = ' Tage';
+        }
+        if (hours == 1) {
+            var hours_text = ' Stunde'
+        } else {
+            var hours_text = ' Stunden';
+        }
+        if (minutes == 1) {
+            var minutes_text = ' Minute'
+        } else {
+            var minutes_text = ' Minuten';
+        }
+        if (seconds == 1) {
+            var seconds_text = ' Sekunde'
+        } else {
+            var seconds_text = ' Sekunden';
+        }
 
-        if(days == 0 && !(hours == 0 && minutes == 0 && seconds == 0)){
-            $('#countdown').html(hours+hours_text+', '+  minutes+minutes_text+' und ' +  seconds+seconds_text);
-            if(days == 0 && hours == 0 && !(minutes == 0 && seconds == 0)){
-                $('#countdown').html(minutes+minutes_text+' und '+  seconds+seconds_text);
-                if(days == 0 && hours == 0 && minutes == 0 && !(seconds == 0)){
-                    $('#countdown').html(seconds+seconds_text);
+        if (days == 0 && !(hours == 0 && minutes == 0 && seconds == 0)) {
+            $('#countdown').html(hours + hours_text + ', ' + minutes + minutes_text + ' und ' + seconds + seconds_text);
+            if (days == 0 && hours == 0 && !(minutes == 0 && seconds == 0)) {
+                $('#countdown').html(minutes + minutes_text + ' und ' + seconds + seconds_text);
+                if (days == 0 && hours == 0 && minutes == 0 && !(seconds == 0)) {
+                    $('#countdown').html(seconds + seconds_text);
                 }
             }
         } else {
-            $('#countdown').html(days+days_text+', '+  hours+hours_text+', '+  minutes+minutes_text);
+            $('#countdown').html(days + days_text + ', ' + hours + hours_text + ', ' + minutes + minutes_text);
         }
 
         if (distance < 0) {
@@ -114,13 +133,15 @@ include 'app/functions/services/teamspeak/renew.php';
 </script>
 
 <script type="text/javascript">
-    $("select, input, textarea").change(function() {
+    $("select, input, textarea").change(function () {
         update();
     }).trigger("change");
 
-    function update()
-    {
-        var price = Number("<?php echo $price; ?>" * ($("#duration").find("option:selected").data("factor") / 30)).toLocaleString("de-DE", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    function update() {
+        var price = Number("<?php echo $price; ?>" * ($("#duration").find("option:selected").data("factor") / 30)).toLocaleString("de-DE", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
         $("*[data-amount]").html(price + " €");
     }
 </script>

@@ -1,6 +1,6 @@
 <?php
 
-if(strpos($currPage, 'front_') !== false){
+if (strpos($currPage, 'front_') !== false) {
     $currPageName = str_replace("front_", "", $currPage);
     $isBackPage = FALSE;
 }
@@ -18,7 +18,8 @@ if(strpos($currPage, 'front_') !== false){
     <link rel="apple-touch-icon" href="<?= $frontUrl; ?>img/favicon.ico">
     <link rel="icon" href="<?= $frontUrl; ?>img/favicon.ico">
     <!-- WEB FONTS  -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
     <!-- BOOTSTRAP MIN CSS -->
     <link href="<?= $frontUrl; ?>css/bootstrap.min.css" rel="stylesheet">
     <!-- MC Scroll CSS -->
@@ -32,13 +33,15 @@ if(strpos($currPage, 'front_') !== false){
     <!-- RESPONSIVE CSS -->
     <link href="<?= $frontUrl; ?>responsive.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"/>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css"/>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
     <script>
-        window.addEventListener("load", function(){
+        window.addEventListener("load", function () {
             window.cookieconsent.initialise({
                 "palette": {
                     "popup": {
@@ -56,7 +59,8 @@ if(strpos($currPage, 'front_') !== false){
                     "dismiss": "Vertanden",
                     "link": "Erfahre mehr"
                 }
-            })});
+            })
+        });
     </script>
 
 </head>

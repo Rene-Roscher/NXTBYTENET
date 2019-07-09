@@ -20,7 +20,6 @@ include 'app/require_once/page_controller.php';
 
                 echo sendSuccess('Deine Notiz wurde gespeichert.');
                 header('refresh:3;url='.$url.'dashboard');
-
             }
         }
 
@@ -104,9 +103,6 @@ include 'app/require_once/page_controller.php';
             <div class="col-md-6">
                 <div id="recentActivityWidget" class="card card-shadow card-lg pb-20">
                     <div class="card-header card-header-transparent pb-10">
-<!--                        <div class="card-header-actions">-->
-<!--                            <span class="badge badge-default badge-round">VIEW ALL</span>-->
-<!--                        </div>-->
                         <h5 class="card-title"> News </h5>
                     </div>
                     <ul class="timeline timeline-icon">
@@ -124,7 +120,6 @@ include 'app/require_once/page_controller.php';
                                 </div>
                                 <div class="timeline-content">
                                     <div class="title">
-                                        <!-- <span class="authors">NONE</span><br> -->
                                         <?php echo nl2br2($row['message']); ?>
                                     </div>
                                     <div class="metas">

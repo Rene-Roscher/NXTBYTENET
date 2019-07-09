@@ -30,16 +30,16 @@ include 'app/require_once/page_controller.php';
                             </thead>
                             <tbody>
                             <?php
-                            $SQLSelectServers = $odb -> prepare("SELECT * FROM `user_transactions` WHERE `user_id` = :user_id");
+                            $SQLSelectServers = $odb->prepare("SELECT * FROM `user_transactions` WHERE `user_id` = :user_id");
                             $SQLSelectServers->execute(array(":user_id" => $_SESSION['id']));
                             if ($SQLSelectServers->rowCount() != 0) {
-                                while ($row = $SQLSelectServers -> fetch(PDO::FETCH_ASSOC)){
+                                while ($row = $SQLSelectServers->fetch(PDO::FETCH_ASSOC)) {
 
-                                    if($row['art'] == 'RENEW'){
+                                    if ($row['art'] == 'RENEW') {
                                         $aktion = 'Verlängerung';
-                                    } elseif($row['art'] == 'ORDER'){
+                                    } elseif ($row['art'] == 'ORDER') {
                                         $aktion = 'Bestellung';
-                                    } elseif($row['art'] == 'INTERN'){
+                                    } elseif ($row['art'] == 'INTERN') {
                                         $aktion = 'Interne Transaktion';
                                     }
 
@@ -51,7 +51,8 @@ include 'app/require_once/page_controller.php';
                                         <td><?php echo $row['amount']; ?>€</td>
                                         <td><?php echo $row['created_at']; ?></td>
                                     </tr>
-                                <?php } } ?>
+                                <?php }
+                            } ?>
                             </tbody>
                         </table>
 
@@ -79,16 +80,16 @@ include 'app/require_once/page_controller.php';
                             </thead>
                             <tbody>
                             <?php
-                            $SQLSelectServers = $odb -> prepare("SELECT * FROM `transactions` WHERE `user_id` = :user_id AND `state` = 'DONE'");
+                            $SQLSelectServers = $odb->prepare("SELECT * FROM `transactions` WHERE `user_id` = :user_id AND `state` = 'DONE'");
                             $SQLSelectServers->execute(array(":user_id" => $_SESSION['id']));
                             if ($SQLSelectServers->rowCount() != 0) {
-                                while ($row = $SQLSelectServers -> fetch(PDO::FETCH_ASSOC)){
+                                while ($row = $SQLSelectServers->fetch(PDO::FETCH_ASSOC)) {
 
-                                    if($row['state'] == 'DONE'){
+                                    if ($row['state'] == 'DONE') {
                                         $status = 'Erfolgreich';
-                                    } elseif($row['state'] == 'ABORT'){
+                                    } elseif ($row['state'] == 'ABORT') {
                                         $status = 'Abgebrochen';
-                                    } elseif($row['state'] == 'PENDING'){
+                                    } elseif ($row['state'] == 'PENDING') {
                                         $status = 'Warte auf Zahlungseingang';
                                     }
 
@@ -100,9 +101,11 @@ include 'app/require_once/page_controller.php';
                                         <td><?php echo $row['amount']; ?>€</td>
                                         <td><?php echo $row['desc']; ?></td>
                                         <td><?php echo $row['created_at']; ?></td>
-                                        <td><a href="<?php echo $url; ?>rechnung/<?php echo $row['id']; ?>" class="btn btn-sm btn-primary">Rechnung anzeigen</a></td>
+                                        <td><a href="<?php echo $url; ?>rechnung/<?php echo $row['id']; ?>"
+                                               class="btn btn-sm btn-primary">Rechnung anzeigen</a></td>
                                     </tr>
-                                <?php } } ?>
+                                <?php }
+                            } ?>
                             </tbody>
                         </table>
 

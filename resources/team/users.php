@@ -4,6 +4,7 @@ include 'app/require_once/page_controller.php';
 
 if(!($role->isAdmin($odb, $_SESSION['id']))){
     header('Location: '.$url.'logout');
+    die();
 }
 
 if(isset($_POST['customerLogin'])){
@@ -22,7 +23,7 @@ if(isset($_POST['customerLogin'])){
             $_SESSION['email'] = $kundenInfo['email'];
 
             header('Location: ' . $url.'dashboard');
-
+            die();
         }
 
     }

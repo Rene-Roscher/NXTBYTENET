@@ -33,27 +33,27 @@
 <script src="<?php echo $cdnUrl; ?>vendor/bootbox/bootbox.js"></script>
 
 <script>
-    $('#desc_table').DataTable( {
-        "order": [[0,"desc"]],
+    $('#desc_table').DataTable({
+        "order": [[0, "desc"]],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
         }
-    } );
+    });
 </script>
 <script>
-    $('#asc_table').DataTable( {
+    $('#asc_table').DataTable({
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
         }
-    } );
+    });
 </script>
 <script>
-    $('#ticket_table').DataTable( {
-        "order": [[2,"desc"]],
+    $('#ticket_table').DataTable({
+        "order": [[2, "desc"]],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
         }
-    } );
+    });
 </script>
 
 <!-- Scripts -->
@@ -84,11 +84,11 @@
 <script src="<?php echo $cdnUrl; ?>examples/js/tables/datatable.js"></script>
 
 <script>
-    (function(document, window, $){
+    (function (document, window, $) {
         'use strict';
 
         var Site = window.Site;
-        $(document).ready(function(){
+        $(document).ready(function () {
             Site.run();
         });
     })(document, window, jQuery);

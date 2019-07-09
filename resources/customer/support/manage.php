@@ -4,23 +4,24 @@ include 'app/require_once/page_controller.php';
 
 $ticket_id = $_GET['id'];
 
-$SQL = $odb -> prepare("SELECT * FROM `tickets` WHERE `id` = :ticket_id");
+$SQL = $odb->prepare("SELECT * FROM `tickets` WHERE `id` = :ticket_id");
 $SQL->execute(array(":ticket_id" => $ticket_id));
-$ticketInfos = $SQL -> fetch(PDO::FETCH_ASSOC);
+$ticketInfos = $SQL->fetch(PDO::FETCH_ASSOC);
 
-if(!($ticketInfos['user_id'] == $_SESSION['id'])){
-    header('Location: '.$url.'support');
+if (!($ticketInfos['user_id'] == $_SESSION['id'])) {
+    header('Location: ' . $url . 'support');
+    die();
 }
 
-if($ticketInfos['status'] == 'OPEN'){
+if ($ticketInfos['status'] == 'OPEN') {
     $status = 'Offen';
-} elseif($ticketInfos['status'] == 'CLOSED'){
+} elseif ($ticketInfos['status'] == 'CLOSED') {
     $status = 'Geschlossen';
 }
 
-if($ticketInfos['last_msg'] == 'CUSTOMER'){
+if ($ticketInfos['last_msg'] == 'CUSTOMER') {
     $last_msg = 'Kundenantwort';
-} elseif($ticketInfos['last_msg'] == 'SUPPORT'){
+} elseif ($ticketInfos['last_msg'] == 'SUPPORT') {
     $last_msg = 'Supportantwort';
 }
 
@@ -36,20 +37,20 @@ if($ticketInfos['last_msg'] == 'CUSTOMER'){
 
         <?php
 
-        if(isset($_POST['answerTicket'])){
-            if(isset($_POST['message']) && !empty($_POST['message'])){
+        if (isset($_POST['answerTicket'])) {
+            if (isset($_POST['message']) && !empty($_POST['message'])) {
 
-                $SQL = $odb -> prepare("INSERT INTO `ticket_message`(`ticket_id`, `writer_id`, `message`) VALUES (:ticket_id,:writer_id,:message)");
+                $SQL = $odb->prepare("INSERT INTO `ticket_message`(`ticket_id`, `writer_id`, `message`) VALUES (:ticket_id,:writer_id,:message)");
                 $SQL->execute(array(":ticket_id" => $ticket_id, ":writer_id" => $_SESSION['id'], ":message" => $_POST['message']));
 
-                $SQL = $odb -> prepare("UPDATE `tickets` SET `last_msg` = 'CUSTOMER' WHERE `id` = :id");
+                $SQL = $odb->prepare("UPDATE `tickets` SET `last_msg` = 'CUSTOMER' WHERE `id` = :id");
                 $SQL->execute(array(":id" => $ticket_id));
-                
-                sendPush($pushoverUserKey,'Neue Antwort auf ein Support-Ticket','Soeben hat der Benutzer '.$user->getName($odb, $_SESSION['id']).' auf das Ticket mit dem Titel '.$ticketInfos['title'].' geantwortet.');
+
+                sendPush($pushoverUserKey, 'Neue Antwort auf ein Support-Ticket', 'Soeben hat der Benutzer ' . $user->getName($odb, $_SESSION['id']) . ' auf das Ticket mit dem Titel ' . $ticketInfos['title'] . ' geantwortet.');
 
                 echo sendSuccess('Antwort übermittelt');
-                header('Location: '.$url.'support/'.$ticket_id);
-
+                header('Location: ' . $url . 'support/' . $ticket_id);
+                die();
             }
         }
 
@@ -81,56 +82,68 @@ if($ticketInfos['last_msg'] == 'CUSTOMER'){
 
                         <div class="chat">
                             <div class="chat-avatar">
-                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="<?php echo $user->getName($odb, $ticketInfos['user_id']); ?>">
-                                    <img src="https://api.adorable.io/avatars/50/<?php echo $user->getName($odb, $ticketInfos['user_id']); ?>" alt="<?php echo $user->getName($odb, $ticketInfos['user_id']); ?>">
+                                <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
+                                   title="<?php echo $user->getName($odb, $ticketInfos['user_id']); ?>">
+                                    <img src="https://api.adorable.io/avatars/50/<?php echo $ticketInfos['user_id']; ?>"
+                                         alt="<?php echo $user->getName($odb, $ticketInfos['user_id']); ?>">
                                 </a>
                             </div>
                             <div class="chat-body">
                                 <div class="chat-content">
                                     <p> <?php echo $ticketInfos['message']; ?> </p>
-                                    <time class="chat-time"><?php echo $user->getName($odb, $ticketInfos['user_id']); ?> schrieb am <?php echo $site->formatDate($ticketInfos['created_at']); ?></time>
+                                    <time class="chat-time"><?php echo $user->getName($odb, $ticketInfos['user_id']); ?>
+                                        schrieb am <?php echo $site->formatDate($ticketInfos['created_at']); ?></time>
                                 </div>
                             </div>
                         </div>
 
                         <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
-                        <?php $SQL = $odb -> prepare("SELECT * FROM `ticket_message` WHERE `ticket_id` = :ticket_id");
+                        <?php $SQL = $odb->prepare("SELECT * FROM `ticket_message` WHERE `ticket_id` = :ticket_id");
                         $SQL->execute(array(":ticket_id" => $ticket_id));
                         if ($SQL->rowCount() != 0) {
-                        while ($row = $SQL -> fetch(PDO::FETCH_ASSOC)){ ?>
+                            while ($row = $SQL->fetch(PDO::FETCH_ASSOC)) { ?>
 
-                                <?php if($role->isInTeam($odb, $row['writer_id']) == false){ ?>
+                                <?php if ($role->isInTeam($odb, $row['writer_id']) == false) { ?>
                                     <div class="chat">
                                         <div class="chat-avatar">
-                                            <a class="avatar" data-toggle="tooltip" href="#" data-placement="right" title="<?php echo $user->getName($odb, $row['writer_id']); ?>">
-                                                <img src="https://api.adorable.io/avatars/50/<?= $user->getName($odb, $row['writer_id']); ?>" alt="<?= $user->getName($odb, $row['writer_id']); ?>">
+                                            <a class="avatar" data-toggle="tooltip" href="#" data-placement="right"
+                                               title="<?php echo $user->getName($odb, $row['writer_id']); ?>">
+                                                <img src="https://api.adorable.io/avatars/50/<?= $user->getName($odb, $row['writer_id']); ?>"
+                                                     alt="<?= $user->getName($odb, $row['writer_id']); ?>">
                                             </a>
                                         </div>
                                         <div class="chat-body">
                                             <div class="chat-content">
                                                 <p> <?php echo nl2br2($row['message']); ?> </p>
-                                                <time class="chat-time"><?php echo $user->getName($odb, $row['writer_id']); ?> schrieb am <?php echo $site->formatDate($row['created_at']); ?></time>
+                                                <time class="chat-time"><?php echo $user->getName($odb, $row['writer_id']); ?>
+                                                    schrieb
+                                                    am <?php echo $site->formatDate($row['created_at']); ?></time>
                                             </div>
                                         </div>
                                     </div>
                                 <?php } else { ?>
                                     <div class="chat chat-left">
                                         <div class="chat-avatar">
-                                            <a class="avatar" data-toggle="tooltip" href="#" data-placement="left" title="<?php echo $user->getName($odb, $row['writer_id']); ?>">
-                                                <img src="https://api.adorable.io/avatars/50/<?= $user->getName($odb, $row['writer_id']); ?>" alt="<?= $user->getName($odb, $row['writer_id']); ?>">
+                                            <a class="avatar" data-toggle="tooltip" href="#" data-placement="left"
+                                               title="<?php echo $user->getName($odb, $row['writer_id']); ?>">
+                                                <img src="https://api.adorable.io/avatars/50/<?= $user->getName($odb, $row['writer_id']); ?>"
+                                                     alt="<?= $user->getName($odb, $row['writer_id']); ?>">
                                             </a>
                                         </div>
                                         <div class="chat-body">
                                             <div class="chat-content">
                                                 <p> <?php echo nl2br2($row['message']); ?> </p>
-                                                <time class="chat-time"><?php echo $user->getName($odb, $row['writer_id']); ?> schrieb am <?php echo $site->formatDate($row['created_at']); ?></time>
+                                                <time class="chat-time"><?php echo $user->getName($odb, $row['writer_id']); ?>
+                                                    schrieb
+                                                    am <?php echo $site->formatDate($row['created_at']); ?></time>
                                             </div>
                                         </div>
                                     </div>
                                 <?php } ?>
 
-                            <?php } } ?>
+                            <?php }
+                        } ?>
 
                         <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
@@ -138,15 +151,16 @@ if($ticketInfos['last_msg'] == 'CUSTOMER'){
                 </div>
             </div>
             <div class="panel-footer pb-30">
-                <?php if($ticketInfos['status'] == 'OPEN'){ ?>
-                <form method="post">
+                <?php if ($ticketInfos['status'] == 'OPEN') { ?>
+                    <form method="post">
 
-                    <hr>
-                    <textarea class="form-control" rows="6" name="message" placeholder="Antworte auf diese Supportanfrage"></textarea>
-                    <br>
-                    <button class="btn btn-primary btn-block" name="answerTicket" type="submit">Antworten</button>
+                        <hr>
+                        <textarea class="form-control" rows="6" name="message"
+                                  placeholder="Antworte auf diese Supportanfrage"></textarea>
+                        <br>
+                        <button class="btn btn-primary btn-block" name="answerTicket" type="submit">Antworten</button>
 
-                </form>
+                    </form>
                 <?php } else { ?>
                     <center>Dieses Ticket ist geschlossen</center>
                 <?php } ?>

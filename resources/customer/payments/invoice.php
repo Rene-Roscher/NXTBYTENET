@@ -2,18 +2,19 @@
 $currPage = "Buchhaltung";
 include 'app/require_once/page_controller.php';
 
-if(empty($_GET['id']) || !isset($_GET['id'])){
-    header('Location: '.$url.'zahlungsverlauf');
+if (empty($_GET['id']) || !isset($_GET['id'])) {
+    header('Location: ' . $url . 'zahlungsverlauf');
 }
 
 $invoice_id = $_GET['id'];
 
-$SQL = $odb -> prepare("SELECT * FROM `transactions` WHERE `id` = :id");
-$SQL -> execute(array(":id" => $invoice_id));
-$invoiceInfos = $SQL -> fetch(PDO::FETCH_ASSOC);
+$SQL = $odb->prepare("SELECT * FROM `transactions` WHERE `id` = :id");
+$SQL->execute(array(":id" => $invoice_id));
+$invoiceInfos = $SQL->fetch(PDO::FETCH_ASSOC);
 
-if(!($_SESSION['id'] == $invoiceInfos['user_id'])){
-    header('Location: '.$url.'zahlungsverlauf');
+if (!($_SESSION['id'] == $invoiceInfos['user_id'])) {
+    header('Location: ' . $url . 'zahlungsverlauf');
+    die();
 }
 
 ?>
@@ -43,7 +44,9 @@ if(!($_SESSION['id'] == $invoiceInfos['user_id'])){
                         <div class="col text-right">
 
                             <div class="badge badge-success">
-                                <?php if($invoiceInfos['state'] == 'DONE'){ echo 'Erfolgreich'; } ?>
+                                <?php if ($invoiceInfos['state'] == 'DONE') {
+                                    echo 'Erfolgreich';
+                                } ?>
                             </div>
 
                         </div>
@@ -51,15 +54,16 @@ if(!($_SESSION['id'] == $invoiceInfos['user_id'])){
                     <div class="row">
                         <div class="col text-center">
 
-                            <img src="<?php echo $picUrl; ?>logo/logo.png" alt="..." class="img-fluid mb-4" style="max-width: 220px;">
+                            <img src="<?php echo $picUrl; ?>logo/logo.png" alt="..." class="img-fluid mb-4"
+                                 style="max-width: 220px;">
 
                             <h2 class="mb-2">
                                 Guthabenaufladung
                             </h2>
 
                             <br>
-							<br>
-							<br>
+                            <br>
+                            <br>
 
                         </div>
                     </div>
@@ -93,7 +97,8 @@ if(!($_SESSION['id'] == $invoiceInfos['user_id'])){
                             </h6>
 
                             <p class="text-muted mb-4">
-                                <strong class="text-body"><?php echo $userInfo['vorname']; ?> <?php echo $userInfo['nachname']; ?></strong> <br>
+                                <strong class="text-body"><?php echo $userInfo['vorname']; ?><?php echo $userInfo['nachname']; ?></strong>
+                                <br>
                                 <?php echo $userInfo['strasse']; ?> <?php echo $userInfo['hausnummer']; ?><br>
                                 <?php echo $userInfo['postleitzahl']; ?> <?php echo $userInfo['stadt']; ?><br>
                                 <?php echo $userInfo['land']; ?>
@@ -105,11 +110,11 @@ if(!($_SESSION['id'] == $invoiceInfos['user_id'])){
 
                             <p class="mb-4">
                                 <time datetime="2018-04-23">
-									<?php 
-									$date = new DateTime($invoiceInfos['created_at']);
-									echo $date->format('d.m.Y H:i:s');
-									?>
-								</time>
+                                    <?php
+                                    $date = new DateTime($invoiceInfos['created_at']);
+                                    echo $date->format('d.m.Y H:i:s');
+                                    ?>
+                                </time>
                             </p>
 
                         </div>
@@ -134,17 +139,17 @@ if(!($_SESSION['id'] == $invoiceInfos['user_id'])){
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="px-0">
-                                                <?php echo $invoiceInfos['desc']; ?>
-                                            </td>
-                                            <td class="px-0">
-                                                <?php echo $invoiceInfos['gateway']; ?>
-                                            </td>
-                                            <td class="px-0 text-right">
-                                                <?php echo $invoiceInfos['amount']; ?>€
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td class="px-0">
+                                            <?php echo $invoiceInfos['desc']; ?>
+                                        </td>
+                                        <td class="px-0">
+                                            <?php echo $invoiceInfos['gateway']; ?>
+                                        </td>
+                                        <td class="px-0 text-right">
+                                            <?php echo $invoiceInfos['amount']; ?>€
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
