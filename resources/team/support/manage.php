@@ -10,6 +10,7 @@ $ticketInfos = $SQL -> fetch(PDO::FETCH_ASSOC);
 
 if(!($role->isInTeam($odb, $_SESSION['id']))){
     header('Location: '.$url.'support');
+    die();
 }
 
 if($ticketInfos['status'] == 'OPEN'){
