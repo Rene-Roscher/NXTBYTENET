@@ -4,6 +4,7 @@ include 'app/require_once/page_controller.php';
 
 if(!($role->isInTeam($odb, $_SESSION['id']))){
     header('Location: '.$url.'support');
+    die();
 }
 
 ?>
