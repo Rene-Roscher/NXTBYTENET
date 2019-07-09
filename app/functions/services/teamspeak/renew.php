@@ -15,6 +15,7 @@ $serverInfos = $SQLGetServerInfos -> fetch(PDO::FETCH_ASSOC);
 
 if(!($serverInfos['deleted_at'] == NULL)){
     header('Location: '.$url.'teamspeak/order');
+    die();
 }
 
 $price = $serverInfos['slots'] * $site->getPriceFromProduct($odb, 'TEAMSPEAK');

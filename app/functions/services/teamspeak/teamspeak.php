@@ -21,9 +21,6 @@ class ts3{
             $ts3_VirtualServer = TeamSpeak3::factory($uri);
 
             return 'ONLINE';
-
-            $ts3_VirtualServer->serverDeselect();
-
         }catch(TeamSpeak3_Exception $e){
             return 'OFFLINE';
         }

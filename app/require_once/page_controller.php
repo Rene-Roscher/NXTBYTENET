@@ -8,16 +8,19 @@
 
 if($user->LoggedIn() && $userInfo['status'] == 'BANNED' || $user->LoggedIn() && $userInfo['status'] == 'PENDING' || $user->LoggedIn() && $userInfo['status'] == 'DISABLED') {
     header('Location: '.$url.'logout');
+    die();
 }
 
 if($user->LoggedIn()){
     if(strpos($currPage, 'auth_') !== false){
         header('Location: '.$url.'dashboard');
+        die();
     }
 }
 
 if(strpos($currPage, 'back_') !== false && !$user->LoggedIn()){
     header('Location: '.$url.'login');
+    die();
 }
 
 if(strpos($currPage, 'front_') !== false){

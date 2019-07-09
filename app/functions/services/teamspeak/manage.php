@@ -14,6 +14,7 @@ $serverInfos = $SQLGetServerInfos -> fetch(PDO::FETCH_ASSOC);
 
 if(!($serverInfos['deleted_at'] == NULL)){
     header('Location: '.$url.'teamspeak/order');
+    die();
 }
 
 include 'ts3_functions.php';
